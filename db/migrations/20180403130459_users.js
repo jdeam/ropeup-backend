@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
     table.integer('start_year');
     table.string('email').notNullable();
     table.string('password').notNullable();
+    table.timestamps(true, true);
   });
 };
 
