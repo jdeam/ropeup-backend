@@ -8,4 +8,22 @@ function login(req, res, next) {
 
 }
 
-module.exports = { signup, login };
+function getUserById(req, res, next) {
+
+}
+
+function getUsersByLoc(req, res, next) {
+
+}
+
+function updateUser(req, res, next) {
+
+}
+
+module.exports = {
+  signup,
+  login,
+  getUserById,
+  getUsersByLoc,
+  updateUser
+};
