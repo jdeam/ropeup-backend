@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mogran = require('morgan');
+const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 
 // Sets up enviroment variables for config
