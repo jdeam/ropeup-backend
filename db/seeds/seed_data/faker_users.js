@@ -5,7 +5,7 @@ const fs = require('fs');
 const zipcodes = require('zipcodes');
 const zipSeeds = [98103, 97209, 94129, 92705, 84109, 80301];
 const zips = zipSeeds.reduce((acc, zip) => {
-  const zipList = zipcodes.radius(zip, 10);
+  const zipList = zipcodes.radius(zip, 20);
   return [ ...acc, ...zipList ];
 }, []);
 
