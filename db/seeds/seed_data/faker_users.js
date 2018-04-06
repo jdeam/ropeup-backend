@@ -18,6 +18,7 @@ while (start_year <= 2018) {
 }
 
 const gyms = require('./gyms');
+const phrases = require('./phrases');
 
 const grades = [
   '5.7', '5.8', '5.9', '5.10a', '5.10b', '5.10c', '5.10d', '5.11a',
@@ -33,6 +34,7 @@ while (users.length<500) {
   const user = {};
 
   user.img_url = urls[users.length%20];
+  user.about = phrases[users.length%20];
 
   user.first_name = faker.name.firstName();
   user.last_name = faker.name.lastName();

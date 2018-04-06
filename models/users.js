@@ -56,6 +56,19 @@ function login(email, password) {
 function getUserById(id) {
   return knex('users')
     .where({ id })
+    .select(
+      'img_url',
+      'first_name',
+      'last_name',
+      'dob',
+      'zip',
+      'gyms',
+      'tr',
+      'lead',
+      'grade_low',
+      'grade_high',
+      'start_year'
+    )
     .first();
 }
 

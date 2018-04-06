@@ -1,0 +1,22 @@
+module.exports = [
+  'Right foot. You’ve got to put your right foot on the pink hold.',
+  'I\'m safe and reliable, and my stoke factor is high. I work M-F 8-5 so evenings and weekends are my free time unless I schedule something in advance.',
+  'I am looking for climbing partner(s)/mentor(s) for sport climbing, as well as suggestions for great routes to climb. (I have never climbed in Oregon before.)',
+  'I\'m an experienced climber looking for a good partner to climb with. Have a flexible schedule.',
+  'Hi, looking for a regular gym partner to hit up Vertical World Seattle weekdays after work (anytime in 5:30pm to 9:30pm range), would like to go at least 2-3 times a week.',
+  'Will belay for tacos. Down for sport, bouldering, slacklining, street tacos, or whatever. Lemme know!',
+  'I\'m looking for a belay partner for evenings at GWPC, Ironworks, or Mission Cliffs. Any climbing level is fine as long as you are a safe, attentive belayer.',
+  'Looking for a consistent evening lead partner at GWPC in Oakland, preferably someone who can generally start around 5:30/6. Bonus points if you\'re single and hot. Just kidding, kind of ...',
+  'Looking for more gym partners. I lead 10s and 11s in the gym, happy to belay you on whatever or toprope.',
+  'Getting back into climbing after a year and a half hiatus while I finished school.',
+  'I joined Movement Climbing and am super eager to find partners to belay with indoors or get out to Boulder Canyon with.',
+  'Looking for a regular partner for evo, either before 7 am or after 7pm any day but Monday. Lead 9/10a, but projecting 10d on TR, V3 & V4 bouldering.',
+  'Looking for gym climbing partners on Mondays or Thursdays at the Planet Granite gym in Portland. Pretty flexible on schedule but super early is typically better than super late.',
+  'YOOO! I am looking to meet some people that are down for a good time! I am top rope belay certified and soon to do a lead test within the next month.',
+  'I moved to Seattle last summer, and am looking for regular gym partners in the 5.11 / 5.12 range to project climbs and help each other push into sending at 5.12 level.',
+  'Have been climbing for 10+ years and never dropped anyone.  Pretty easy going about what gets climbed -- lead or TR.',
+  'I\'m looking for climbing partners to climb with on the regular. Looking to expand my climbing group to some partners with more availability.',
+  'I\'m looking to get back into climbing shape with some regular partners. Right now, I have most evenings and weekends free.',
+  'Looking to climb with a few more partners, preferably lead. I work part-time and climb a ton, so don\'t hesitate to reach out.',
+  'Hey, looking for a climbing partner for Planet Granite SF.  I\'d like to go a few times a week after work (6 or later).  Let me know if you\'d like to climb!'
+];
