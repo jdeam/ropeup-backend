@@ -9,7 +9,7 @@ function getUserByEmail(email) {
     .first();
 }
 
-function signup(email, password) {
+function signup(first_name, last_name, email, password) {
   return getUserByEmail(email)
     .then(user => {
       if (user) throw 'User already exists.';
@@ -17,7 +17,12 @@ function signup(email, password) {
     })
     .then(hashedPassword => {
       return knex('users')
-        .insert({ email, password: hashedPassword })
+        .insert({
+          first_name,
+          last_name,
+          email,
+          password: hashedPassword
+        })
         .returning('*')
     })
     .then(user => {
@@ -28,7 +33,7 @@ function signup(email, password) {
         process.env.JWT_SECRET,
         { expiresIn: Date.now() + fourWeeks }
       );
-      return { token, claim };
+      return token;
     });
 }
 
@@ -49,7 +54,7 @@ function login(email, password) {
         process.env.JWT_SECRET,
         { expiresIn: Date.now() + fourWeeks }
       );
-      return { token, claim };
+      return token;
     });
 }
 
@@ -76,7 +81,28 @@ function getUserById(id) {
 function getUsersByZip(zip) {
   const zips = zipcodes.radius(zip, 20)
   return knex('users')
-    .whereIn('zip', zips);
+    .whereIn('zip', zips)
+    .select(
+      'img_url',
+      'first_name',
+      'last_name',
+      'dob',
+      'zip',
+      'gyms',
+      'tr',
+      'lead',
+      'grade_low',
+      'grade_high',
+      'start_year',
+      'about'
+    )
+    .then(users => {
+      return users.sort((userA, userB) => {
+        distA = zipcodes.distance(zip, userA.zip);
+        distB = zipcodes.distance(zip, userB.zip);
+        return distA - distB;
+      });
+    });
 }
 
 function updateUser(id, userInfo) {

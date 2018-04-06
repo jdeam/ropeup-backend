@@ -1,5 +1,16 @@
 const model = require('../models');
 
+function getUserByToken(req, res, next) {
+  const id = req.claim.user_id;
+  return model.users.getUserById(id)
+    .then(user => {
+      return res.status(200).json({ user });
+    })
+    .catch(err => {
+      return next({ status: 404, message: 'User not found.' });
+    });
+}
+
 function getUserById(req, res, next) {
   const id = req.params.id;
   return model.users.getUserById(id)
@@ -12,7 +23,7 @@ function getUserById(req, res, next) {
 }
 
 function getUsersByZip(req, res, next) {
-  const zip = req.params.zip;
+  const zip = req.query.zip;
   return model.users.getUsersByZip(zip)
     .then(users => {
       return res.status(200).json({ users });
@@ -35,6 +46,7 @@ function updateUser(req, res, next) {
 }
 
 module.exports = {
+  getUserByToken,
   getUserById,
   getUsersByZip,
   updateUser
