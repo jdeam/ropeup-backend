@@ -14,6 +14,7 @@ app.use(morgan('dev'));
 
 const routes = require('./routes');
 
+app.use('/auth', routes.auth);
 app.use('/users', routes.users);
 
 app.use((err, req, res, next) => {

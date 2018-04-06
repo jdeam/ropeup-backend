@@ -3,13 +3,15 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('first_name');
     table.string('last_name');
-    table.string('gender');
-    table.date('dob');
+    table.string('dob');
     table.integer('zip');
     table.text('img_url');
-    table.string('tr_range');
-    table.string('lead_range')
     table.integer('start_year');
+    table.boolean('tr');
+    table.boolean('lead');
+    table.string('grade_low');
+    table.string('grade_high');
+    table.text('gyms');
     table.string('email').notNullable();
     table.string('password').notNullable();
     table.timestamps(true, true);

@@ -18,7 +18,17 @@ function signup(email, password) {
     .then(hashedPassword => {
       return knex('users')
         .insert({ email, password: hashedPassword })
-        .returning('*');
+        .returning('*')
+    })
+    .then(user => {
+      const claim = { user_id: user[0].id };
+      const fourWeeks = 2419200000;
+      const token = jwt.sign(
+        claim,
+        process.env.JWT_SECRET,
+        { expiresIn: Date.now() + fourWeeks }
+      );
+      return { token, claim };
     });
 }
 
@@ -33,13 +43,14 @@ function login(email, password) {
     .then(passwordIsValid => {
       if (!passwordIsValid) throw 'Invalid password.';
       const claim = { user_id: validUser.id };
+      const fourWeeks = 2419200000;
       const token = jwt.sign(
         claim,
         process.env.JWT_SECRET,
-        { expiresIn: Date.now() + 2419200000 }
+        { expiresIn: Date.now() + fourWeeks }
       );
       return { token, claim };
-    })
+    });
 }
 
 function getUserById(id) {
