@@ -67,7 +67,8 @@ function getUserById(id) {
       'lead',
       'grade_low',
       'grade_high',
-      'start_year'
+      'start_year',
+      'about'
     )
     .first();
 }
