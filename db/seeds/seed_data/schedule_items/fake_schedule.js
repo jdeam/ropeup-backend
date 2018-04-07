@@ -3,7 +3,7 @@ const fs = require('fs');
 const schedule_items = [];
 
 for (let user_id=1; user_id<=500; user_id++) {
-  const numItems = Math.ceil(Math.random()*4);
+  const numItems = Math.floor(Math.random()*3) + 2;
   const days = [0, 1, 2, 3, 4, 5, 6];
   const interval = [3, 4, 5];
   for (let i=0; i<numItems; i++) {
