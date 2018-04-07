@@ -62,6 +62,7 @@ function getUserById(id) {
   return knex('users')
     .where({ id })
     .select(
+      'id',
       'img_url',
       'first_name',
       'last_name',
@@ -78,11 +79,13 @@ function getUserById(id) {
     .first();
 }
 
-function getUsersByZip(zip) {
-  const zips = zipcodes.radius(zip, 20)
+function getUsersByZip(zip, id) {
+  const radiusInMiles = 10;
+  const zips = zipcodes.radius(zip, radiusInMiles);
   return knex('users')
     .whereIn('zip', zips)
     .select(
+      'id',
       'img_url',
       'first_name',
       'last_name',
