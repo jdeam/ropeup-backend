@@ -8,7 +8,7 @@ for (let user_id=1; user_id<=500; user_id++) {
   const interval = [3, 4, 5];
   for (let i=0; i<numItems; i++) {
     const item = { user_id };
-    item.day = days.splice(Math.floor(Math.random()*days.length), 1);
+    item.day = days.splice(Math.floor(Math.random()*days.length), 1)[0];
     item.start = Math.floor(Math.random()*13);
     item.end = item.start + interval[Math.floor(Math.random()*3)];
     schedule_items.push(item);
