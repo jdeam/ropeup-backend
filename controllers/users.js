@@ -59,6 +59,7 @@ function getUserById(req, res, next) {
 function updateUser(req, res, next) {
   const id = req.params.id;
   const userInfo = req.body;
+  if (parseInt(id) !== req.claim.user_id) throw 'Invalid request.'
   return model.users.updateUser(id, userInfo)
     .then(user => {
       return res.status(200).json({ user });

@@ -111,8 +111,7 @@ function getUsersByZip(zip, id) {
 function updateUser(id, userInfo) {
   return knex('users')
     .where({ id })
-    .update(userInfo)
-    .returning('*');
+    .update(userInfo);
 }
 
 module.exports = {
