@@ -1,7 +1,7 @@
 const model = require('../models');
 
 function getScheduleByUserId(req, res, next) {
-  const id = req.params.id;
+  const { id } = req.params;
   return model.schedules.getScheduleByUserId(id)
     .then(schedule => {
       return res.status(200).json({ schedule });
@@ -12,7 +12,17 @@ function getScheduleByUserId(req, res, next) {
 }
 
 function addScheduleItem(req, res, next) {
-
+  const { id } = req.params;
+  const { user_id } = req.claim;
+  if (parseInt(id) !== user_id) throw 'Invalid request.'
+  const item = { ...req.body, user_id };
+  return model.schedules.addScheduleItem(item)
+    .then(() => {
+      return res.status(200).json({ message: 'Item inserted.' });
+    })
+    .catch(err => {
+      return next({ status: 400, message: 'Item could not be added.' });
+    });
 }
 
 function deleteScheduleItem(req, res, next) {
@@ -20,7 +30,7 @@ function deleteScheduleItem(req, res, next) {
   const { user_id } = req.claim
   if (parseInt(id) !== user_id) throw 'Invalid request.'
   return model.schedules.deleteScheduleItem(itemId)
-    .then((deleted) => {
+    .then(() => {
       return res.status(200).json({ message: 'Item deleted.' });
     })
     .catch(err => {

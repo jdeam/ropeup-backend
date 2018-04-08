@@ -12,7 +12,9 @@ function getScheduleByUserId(id) {
 }
 
 function addScheduleItem(item) {
-
+  return knex('schedule_items')
+    .insert(item)
+    .returning('*');
 }
 
 function deleteScheduleItem(id) {
