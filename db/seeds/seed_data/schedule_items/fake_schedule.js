@@ -5,7 +5,7 @@ const schedule_items = [];
 for (let user_id=1; user_id<=500; user_id++) {
   const numItems = Math.floor(Math.random()*3) + 2;
   const days = [0, 1, 2, 3, 4, 5, 6];
-  const interval = [3, 4, 5];
+  const interval = [1, 2, 3];
   for (let i=0; i<numItems; i++) {
     const item = { user_id };
     item.day = days.splice(Math.floor(Math.random()*days.length), 1)[0];
