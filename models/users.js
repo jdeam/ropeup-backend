@@ -107,8 +107,8 @@ function getUsersByZip(zip, id) {
         return schedules.getScheduleByUserId(user.id);
       })
     })
-    .then(userPromises => {
-      return Promise.all(userPromises);
+    .then(schedulePromises => {
+      return Promise.all(schedulePromises);
     })
     .then(schedules => {
       return users.map((user, i) => {
