@@ -2,6 +2,7 @@ const knex = require('../db/knex');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const zipcodes = require('zipcodes');
+const schedules = require('./schedules');
 
 function getUserByEmail(email) {
   return knex('users')
@@ -80,6 +81,7 @@ function getUserById(id) {
 }
 
 function getUsersByZip(zip, id) {
+  let users;
   const radiusInMiles = 10;
   const zips = zipcodes.radius(zip, radiusInMiles);
   return knex('users')
@@ -99,8 +101,20 @@ function getUsersByZip(zip, id) {
       'start_year',
       'about'
     )
-    .then(users => {
-      return users.sort((userA, userB) => {
+    .then(result => {
+      users = result;
+      return users.map(user => {
+        return schedules.getScheduleByUserId(user.id);
+      })
+    })
+    .then(userPromises => {
+      return Promise.all(userPromises);
+    })
+    .then(schedules => {
+      return users.map((user, i) => {
+        user.schedule = schedules[i];
+        return user;
+      }).sort((userA, userB) => {
         distA = zipcodes.distance(zip, userA.zip);
         distB = zipcodes.distance(zip, userB.zip);
         return distA - distB;
