@@ -104,7 +104,7 @@ function getUsersByZip(zip, id) {
         distA = zipcodes.distance(zip, userA.zip);
         distB = zipcodes.distance(zip, userB.zip);
         return distA - distB;
-      });
+      }).filter(user => user.id !== id);
     });
 }
 

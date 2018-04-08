@@ -11,6 +11,18 @@ function getScheduleByUserId(id) {
     });
 }
 
+function addScheduleItem(item) {
+
+}
+
+function deleteScheduleItem(id) {
+  return knex('schedule_items')
+    .where({ id })
+    .del();
+}
+
 module.exports = {
-  getScheduleByUserId
+  getScheduleByUserId,
+  addScheduleItem,
+  deleteScheduleItem
 };

@@ -2,9 +2,9 @@ const model = require('../models');
 
 function getUsers(req, res, next) {
   if (req.query.zip) {
-    const zip = req.query.zip;
-    const id = req.claim.id;
-    return model.users.getUsersByZip(zip, id)
+    const { zip } = req.query;
+    const { user_id } = req.claim;
+    return model.users.getUsersByZip(zip, user_id)
       .then(climbers => {
         return res.status(200).json({ climbers });
       })
@@ -36,29 +36,7 @@ function updateUser(req, res, next) {
     });
 }
 
-function getScheduleByUserId(req, res, next) {
-  const id = req.params.id;
-  return model.schedule.getScheduleByUserId(id)
-    .then(schedule => {
-      return res.status(200).json({ schedule });
-    })
-    .catch(err => {
-      return next({ status: 404, message: 'Schedule not found.' });
-    });
-}
-
-function addScheduleItem(req, res, next) {
-
-}
-
-function deleteScheduleItem(req, res, next) {
-
-}
-
 module.exports = {
   getUsers,
-  updateUser,
-  getScheduleByUserId,
-  addScheduleItem,
-  deleteScheduleItem
+  updateUser
 };

@@ -5,7 +5,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 
-// Sets up enviroment variables for config
 require('dotenv').config();
 
 app.use(cors({ exposedHeaders: 'Auth' }));
