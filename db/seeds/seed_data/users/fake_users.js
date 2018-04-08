@@ -30,7 +30,7 @@ const password = bcrypt.hashSync('test', 10);
 
 const users = [];
 
-while (users.length<500) {
+while (users.length<1000) {
   const user = {};
 
   user.img_url = urls[users.length%20];
