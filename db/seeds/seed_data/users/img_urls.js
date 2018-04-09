@@ -1,9 +1,9 @@
 module.exports = [
   'https://www.mountainproject.com/photos/avatars/112520960.jpg?1516381293',
   'https://www.mountainproject.com/photos/avatars/112154059.jpg?1490033059',
-  'https://www.mountainproject.com/photos/avatars/200042132.jpg?1500502509',
   'https://www.mountainproject.com/photos/avatars/107724070.jpg?1481927156',
   'https://www.mountainproject.com/photos/avatars/110932568.jpg?1518212668',
+  'https://www.mountainproject.com/photos/avatars/108051061.jpg?1505704613',
   'https://www.mountainproject.com/photos/avatars/111612938.jpg?1504765012',
   'https://www.mountainproject.com/photos/avatars/111364198.jpg?1481927156',
   'https://www.mountainproject.com/photos/avatars/107618213.jpg?1481927156',
@@ -18,5 +18,10 @@ module.exports = [
   'https://www.mountainproject.com/photos/avatars/107518315.jpg?1486751991',
   'https://www.mountainproject.com/photos/avatars/109924181.jpg?1511635897',
   'https://www.mountainproject.com/photos/avatars/200052680.jpg?1507669319',
-  'https://www.mountainproject.com/photos/avatars/106380331.jpg?1492195270'
+  'https://www.mountainproject.com/photos/avatars/106380331.jpg?1492195270',
+  'https://www.mountainproject.com/photos/avatars/105927097.jpg?1481927156',
+  'https://www.mountainproject.com/photos/avatars/105892311.jpg?1481927156',
+  'https://www.mountainproject.com/photos/avatars/108084480.jpg?1481927156',
+  'https://www.mountainproject.com/photos/avatars/111989392.jpg?1521418460',
+  'https://www.mountainproject.com/photos/avatars/110575679.jpg?1509571906'
 ];

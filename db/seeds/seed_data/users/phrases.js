@@ -1,5 +1,5 @@
 module.exports = [
-  'Right foot. You’ve got to put your right foot on the pink hold.',
+  'Hi, I just got back in the area and am looking to pick up a regular serious partner. I have a flexible schedule so weekday daytime climbing works too!',
   'I\'m safe and reliable, and my stoke factor is high. I work M-F 8-5 so evenings and weekends are my free time unless I schedule something in advance.',
   'I am looking for climbing partner(s)/mentor(s) for sport climbing, as well as suggestions for great routes to climb. (I have never climbed in Oregon before.)',
   'I\'m an experienced climber looking for a good partner to climb with. Have a flexible schedule.',
@@ -18,5 +18,10 @@ module.exports = [
   'I\'m looking for climbing partners to climb with on the regular. Looking to expand my climbing group to some partners with more availability.',
   'I\'m looking to get back into climbing shape with some regular partners. Right now, I have most evenings and weekends free.',
   'Looking to climb with a few more partners, preferably lead. I work part-time and climb a ton, so don\'t hesitate to reach out.',
-  'Hey, looking for a climbing partner for Planet Granite SF.  I\'d like to go a few times a week after work (6 or later).  Let me know if you\'d like to climb!'
+  'Hey, looking for a climbing partner for Planet Granite SF.  I\'d like to go a few times a week after work (6 or later).  Let me know if you\'d like to climb!',
+  'Looking for more partners to train at Movement in boulder. Currently leading 11’s, and want to get stronger this year! Have occasional weekdays free, or can climb around 5pm after work.',
+  'WILL BELAY FOR TIPS. im looking to get as much practices as i can belaying. Im a new climber and want to hone my skills asap.',
+  'I try to go to VW twice a week, during that lovely busy time after work on the weekdays (earliest i can get there is 6), and maybe sunday afternoon.  Looking for a regular weekly partner.',
+  'I am looking for a weekday lead partner to climb with at PRG. I’ll be doing ~3 evenings a week after work. Any time after 4:30 would be excellent!',
+  'Looking for after work climbing buddies, weekend trip buddies and anyone that wants to share their favorite climbing spot with me.'
 ];

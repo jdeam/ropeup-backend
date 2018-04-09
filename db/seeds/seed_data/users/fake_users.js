@@ -1,41 +1,26 @@
 const faker = require('faker');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
+const zipcodes = require('zipcodes');
 const fs = require('fs');
 
-const zipcodes = require('zipcodes');
+const gyms = require('./gyms');
+const phrases = require('./phrases');
+const urls = require('./img_urls');
+const password = bcrypt.hashSync('test', 10);
 const zipSeeds = [98103, 97209, 94129, 92705, 84109, 80301];
 const zips = zipSeeds.reduce((acc, zip) => {
   const zipList = zipcodes.radius(zip, 20);
   return [ ...acc, ...zipList ];
 }, []);
 
-let start_year = 2008;
-const years = [];
-while (start_year <= 2018) {
-  years.push(start_year);
-  start_year += 1;
-}
-
-const gyms = require('./gyms');
-const phrases = require('./phrases');
-
-const grades = [
-  0, 1, 2, 3, 4, 5, 6, 7,
-  8, 9, 10, 11, 12, 13, 14
-];
-
-const urls = require('./img_urls');
-const password = bcrypt.hashSync('test', 10);
-
 const users = [];
 
 while (users.length<1000) {
   const user = {};
 
-  user.img_url = urls[users.length%20];
-  user.about = phrases[users.length%20];
-
+  user.img_url = urls[users.length%25];
+  user.about = phrases[users.length%25];
   user.first_name = faker.name.firstName();
   user.last_name = faker.name.lastName();
   user.email = faker.internet.email();
@@ -48,33 +33,33 @@ while (users.length<1000) {
     return distA - distB;
   })[0].name;
 
-  const randomDate = faker.date.between('1973-04-03', '2000-04-03');
-  user.dob = moment(randomDate).format('YYYY-MM-DD');
-
-  user.start_year = years[Math.floor(Math.random() * years.length)];
+  user.dob = moment(
+    faker.date.between('1973-04-03', '2000-04-03')
+  ).format('YYYY-MM-DD');
+  user.start_year = Math.floor(Math.random()*11) + 2008;
 
   let tr;
   let lead;
-  let range;
-  let i = Math.floor(Math.random()*3);
-  let randomNum = Math.ceil(Math.random()*3);
-  if (randomNum === 1) {
+  let grade_low;
+  let start = Math.floor(Math.random()*3);
+  let profile = Math.ceil(Math.random()*3);
+  if (profile === 1) {
     tr = true;
     lead = false;
-    range = grades.slice(0, 6);
-  } else if (randomNum === 2) {
+    grade_low = start;
+  } else if (profile === 2) {
     tr = true;
     lead = true;
-    range = grades.slice(4,11);
+    grade_low = start + Math.floor(Math.random()*2) + 4;
   } else {
     tr = false;
     lead = true;
-    range = grades.slice(9);
+    grade_low = start + 9;
   }
   user.tr = tr;
   user.lead = lead;
-  user.grade_low = range[i];
-  user.grade_high = range[i+3]
+  user.grade_low = grade_low;
+  user.grade_high = grade_low + 3;
 
   users.push(user);
 }
