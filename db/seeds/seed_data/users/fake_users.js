@@ -21,8 +21,8 @@ const gyms = require('./gyms');
 const phrases = require('./phrases');
 
 const grades = [
-  '5.7', '5.8', '5.9', '5.10a', '5.10b', '5.10c', '5.10d', '5.11a',
-  '5.11b', '5.11c', '5.11d', '5.12a', '5.12b', '5.12c', '5.12d'
+  0, 1, 2, 3, 4, 5, 6, 7,
+  8, 9, 10, 11, 12, 13, 14
 ];
 
 const urls = require('./img_urls');

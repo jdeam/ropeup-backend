@@ -12,8 +12,8 @@ exports.up = function(knex, Promise) {
     table.integer('start_year');
     table.boolean('tr');
     table.boolean('lead');
-    table.string('grade_low');
-    table.string('grade_high');
+    table.integer('grade_low');
+    table.integer('grade_high');
     table.text('about');
     table.timestamps(true, true);
   });
