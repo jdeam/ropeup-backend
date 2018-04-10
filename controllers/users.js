@@ -5,11 +5,11 @@ function getUsers(req, res, next) {
     const { zip } = req.query;
     const { user_id } = req.claim;
     return model.users.getUsersByZip(zip, user_id)
-      .then(climbers => {
-        return res.status(200).json({ climbers });
+      .then(users => {
+        return res.status(200).json({ users });
       })
       .catch(err => {
-        return next({ status: 404, message: 'Users not found.' });
+        return next({ status: 404, message: 'No users found.' });
       });
   } else {
     const id = req.claim.user_id;
