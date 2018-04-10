@@ -123,6 +123,7 @@ function getUsersByZip(zip, id) {
 }
 
 function updateUser(id, userInfo) {
+  console.log(userInfo);
   return knex('users')
     .where({ id })
     .update(userInfo);
