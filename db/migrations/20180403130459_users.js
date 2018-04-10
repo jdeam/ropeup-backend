@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.integer('zip');
     table.string('dob');
     table.text('gyms');
-    table.integer('start_year');
+    table.string('start_year');
     table.boolean('tr');
     table.boolean('lead');
     table.integer('grade_low');
