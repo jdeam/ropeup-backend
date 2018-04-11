@@ -133,5 +133,5 @@ module.exports = {
   login,
   getUserById,
   getUsersByZip,
-  updateUser
+  updateUser,
 };

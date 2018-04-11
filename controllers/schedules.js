@@ -41,5 +41,5 @@ function deleteScheduleItem(req, res, next) {
 module.exports = {
   getScheduleByUserId,
   addScheduleItem,
-  deleteScheduleItem
+  deleteScheduleItem,
 };

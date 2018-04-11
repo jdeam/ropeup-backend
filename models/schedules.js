@@ -26,5 +26,5 @@ function deleteScheduleItem(id) {
 module.exports = {
   getScheduleByUserId,
   addScheduleItem,
-  deleteScheduleItem
+  deleteScheduleItem,
 };

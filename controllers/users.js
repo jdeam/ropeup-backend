@@ -38,5 +38,5 @@ function updateUser(req, res, next) {
 
 module.exports = {
   getUsers,
-  updateUser
+  updateUser,
 };

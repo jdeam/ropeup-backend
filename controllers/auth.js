@@ -32,5 +32,5 @@ function login(req, res, next) {
 
 module.exports = {
   signup,
-  login
+  login,
 };
