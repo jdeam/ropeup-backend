@@ -1,5 +1,5 @@
 module.exports = [
-  'https://www.mountainproject.com/photos/avatars/112520960.jpg?1516381293',
+  'https://www.mountainproject.com/photos/avatars/107306526.jpg?1481927156',
   'https://www.mountainproject.com/photos/avatars/112154059.jpg?1490033059',
   'https://www.mountainproject.com/photos/avatars/107724070.jpg?1481927156',
   'https://www.mountainproject.com/photos/avatars/110932568.jpg?1518212668',

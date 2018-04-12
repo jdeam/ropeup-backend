@@ -64,6 +64,7 @@ function getUserById(id) {
     .where({ id })
     .select(
       'id',
+      'email',
       'img_url',
       'first_name',
       'last_name',
