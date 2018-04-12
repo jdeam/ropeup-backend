@@ -89,6 +89,7 @@ function getUsersByZip(zip, id) {
     .whereIn('zip', zips)
     .select(
       'id',
+      'email',
       'img_url',
       'first_name',
       'last_name',
