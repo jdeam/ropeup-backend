@@ -8,7 +8,6 @@
     "dev": "nodemon app.js",
     "knex": "knex",
     "start": "node app.js",
-    "seed": "npm run knex seed:run",
     "heroku-postbuild": "npm install --production"
   },
   "keywords": [],
