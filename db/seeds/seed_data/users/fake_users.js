@@ -8,7 +8,7 @@ const gyms = require('./gyms');
 const phrases = require('./phrases');
 const urls = require('./img_urls');
 const password = bcrypt.hashSync('test', 10);
-const zipSeeds = [98103, 97209, 94129, 92705, 84109, 80301];
+const zipSeeds = [98103, 97209];
 const zips = zipSeeds.reduce((acc, zip) => {
   const zipList = zipcodes.radius(zip, 20);
   return [ ...acc, ...zipList ];
@@ -19,19 +19,23 @@ const users = [];
 while (users.length<1000) {
   const user = {};
 
+  let username = faker.internet.userName();
+  while (username.length > 12) {
+    username = faker.internet.userName();
+  }
+  user.username = username;
+
   user.img_url = urls[users.length%25];
   user.about = phrases[users.length%25];
-  user.first_name = faker.name.firstName();
-  user.last_name = faker.name.lastName();
   user.email = faker.internet.email();
   user.password = password;
 
   user.zip = zips[Math.floor(Math.random() * zips.length)];
-  user.gyms = [ ...gyms ].sort((gymA, gymB) => {
+  user.gym = [ ...gyms ].sort((gymA, gymB) => {
     const distA = zipcodes.distance(user.zip, gymA.zip);
     const distB = zipcodes.distance(user.zip, gymB.zip);
     return distA - distB;
-  })[0].name;
+  })[0].id;
 
   user.dob = moment(
     faker.date.between('1973-04-03', '2000-04-03')
@@ -64,4 +68,4 @@ while (users.length<1000) {
   users.push(user);
 }
 
-fs.writeFile('users.json', JSON.stringify(users));
+fs.writeFile('usersWithUsernames.json', JSON.stringify(users));

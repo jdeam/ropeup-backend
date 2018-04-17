@@ -1,11 +1,11 @@
 const model = require('../models');
 
 function signup(req, res, next) {
-  const { first_name, last_name, email, password } = req.body;
-  if (!first_name || !last_name || !email || !password) {
+  const { username, email, password } = req.body;
+  if (!username || !email || !password) {
     return next({ status: 400, message: 'Missing fields.' });
   }
-  return model.users.signup(first_name, last_name, email, password)
+  return model.users.signup(username, email, password)
     .then(token => {
       return res.set('Auth', `Bearer: ${token}`)
         .send({ message: 'Signup successful.' });

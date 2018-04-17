@@ -1,4 +1,4 @@
-const users = require('./seed_data/users');
+const users = require('./seed_data/usersWithUsernames');
 
 exports.seed = function(knex, Promise) {
   return knex('users').del()

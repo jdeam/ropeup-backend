@@ -10,17 +10,26 @@ function getUserByEmail(email) {
     .first();
 }
 
-function signup(first_name, last_name, email, password) {
+function getUserByUsername(username) {
+  return knex('users')
+    .where({ username })
+    .first();
+}
+
+function signup(username, email, password) {
   return getUserByEmail(email)
     .then(user => {
-      if (user) throw 'User already exists.';
+      if (user) throw 'User with that email already exists.';
+      return getUserByUsername(username);
+    })
+    .then(user => {
+      if (user) throw 'User with that username already exists.';
       return bcrypt.hash(password, parseInt(process.env.WORK_FACTOR));
     })
     .then(hashedPassword => {
       return knex('users')
         .insert({
-          first_name,
-          last_name,
+          username,
           email,
           password: hashedPassword
         })
@@ -39,7 +48,7 @@ function signup(first_name, last_name, email, password) {
 }
 
 function login(email, password) {
-  let validUser
+  let validUser;
   return getUserByEmail(email)
     .then(user => {
       if (!user) throw 'Please enter a valid email.';
@@ -66,11 +75,10 @@ function getUserById(id) {
       'id',
       'email',
       'img_url',
-      'first_name',
-      'last_name',
+      'username',
       'dob',
       'zip',
-      'gyms',
+      'gym',
       'tr',
       'lead',
       'grade_low',
@@ -91,11 +99,10 @@ function getUsersByZip(zip, id) {
       'id',
       'email',
       'img_url',
-      'first_name',
-      'last_name',
+      'username',
       'dob',
       'zip',
-      'gyms',
+      'gym',
       'tr',
       'lead',
       'grade_low',
@@ -107,7 +114,7 @@ function getUsersByZip(zip, id) {
       users = result;
       return users.map(user => {
         return schedules.getScheduleByUserId(user.id);
-      })
+      });
     })
     .then(schedulePromises => {
       return Promise.all(schedulePromises);
