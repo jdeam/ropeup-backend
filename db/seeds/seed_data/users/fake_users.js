@@ -20,7 +20,7 @@ while (users.length<1000) {
   const user = {};
 
   let username = faker.internet.userName();
-  while (username.length > 12) {
+  while (username.length > 10) {
     username = faker.internet.userName();
   }
   user.username = username;
