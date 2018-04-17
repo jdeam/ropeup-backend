@@ -1,4 +1,8 @@
 const users = require('./seed_data/usersWithUsernames');
+const usersWithoutDobs = users.map(user => {
+  const { dob, ...userWithoutDob } = user;
+  return user;
+});
 
 exports.seed = function(knex, Promise) {
   return knex('users').del()
@@ -8,7 +12,7 @@ exports.seed = function(knex, Promise) {
       );
     })
     .then(function () {
-      return knex('users').insert(users);
+      return knex('users').insert(usersWithoutDobs);
     })
     .then(() => {
       return knex.raw(

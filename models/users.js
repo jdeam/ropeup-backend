@@ -76,7 +76,6 @@ function getUserById(id) {
       'email',
       'img_url',
       'username',
-      'dob',
       'zip',
       'gym',
       'tr',
@@ -100,7 +99,6 @@ function getUsersByZip(zip, id) {
       'email',
       'img_url',
       'username',
-      'dob',
       'zip',
       'gym',
       'tr',
@@ -121,13 +119,15 @@ function getUsersByZip(zip, id) {
     })
     .then(schedules => {
       return users.map((user, i) => {
-        user.schedule = schedules[i];
-        return user;
-      }).sort((userA, userB) => {
-        distA = zipcodes.distance(zip, userA.zip);
-        distB = zipcodes.distance(zip, userB.zip);
-        return distA - distB;
-      }).filter(user => user.id !== id);
+          user.schedule = schedules[i];
+          return user;
+        })
+        .sort((userA, userB) => {
+          distA = zipcodes.distance(zip, userA.zip);
+          distB = zipcodes.distance(zip, userB.zip);
+          return distA - distB;
+        })
+        .filter(user => user.id !== id);
     });
 }
 

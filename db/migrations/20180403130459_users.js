@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
     table.string('email').notNullable();
     table.string('password').notNullable();
     table.string('zip');
-    table.string('dob');
     table.string('start_year');
     table.text('img_url');
     table.integer('gym');

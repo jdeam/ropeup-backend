@@ -1,6 +1,5 @@
 const faker = require('faker');
 const bcrypt = require('bcryptjs');
-const moment = require('moment');
 const zipcodes = require('zipcodes');
 const fs = require('fs');
 
@@ -37,9 +36,6 @@ while (users.length<1000) {
     return distA - distB;
   })[0].id;
 
-  user.dob = moment(
-    faker.date.between('1973-04-03', '2000-04-03')
-  ).format('YYYY-MM-DD');
   user.start_year = Math.floor(Math.random()*11) + 2008;
 
   let tr;
