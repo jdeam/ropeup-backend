@@ -1,4 +1,4 @@
-const schedule_items = require('./seed_data/new_schedule_items');
+const schedule_items = require('./seed_data/newer_schedule_items');
 
 exports.seed = function(knex, Promise) {
   return knex('schedule_items').del()
