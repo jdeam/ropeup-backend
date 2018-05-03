@@ -19,7 +19,7 @@ app.use('/users', routes.users);
 app.use((err, req, res, next) => {
   const status = err.status || 500;
   console.log(err);
-  res.status(status).json({ error: err });
+  res.status(status).json({ message: err.message });
 });
 
 app.use((req, res, next) => {

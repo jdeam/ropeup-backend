@@ -17,13 +17,13 @@ function getUserByUsername(username) {
 }
 
 function signup(username, email, password) {
-  return getUserByEmail(email)
+  return getUserByUsername(username)
     .then(user => {
-      if (user) throw 'User with that email already exists.';
-      return getUserByUsername(username);
+      if (user) throw 'A user with that username already exists.';
+      return getUserByEmail(email);
     })
     .then(user => {
-      if (user) throw 'User with that username already exists.';
+      if (user) throw 'A user with that email already exists.';
       return bcrypt.hash(password, parseInt(process.env.WORK_FACTOR));
     })
     .then(hashedPassword => {
