@@ -1,6 +1,6 @@
-const users = require('./seed_data/usersWithoutDobs');
+const users = require('./seed_data/users');
 
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   return knex('users').del()
     .then(() => {
       return knex.raw(
