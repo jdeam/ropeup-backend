@@ -8,4 +8,4 @@ module.exports = [
   { id: 7, name: "Stoneworks", zip: 97008 },
   { id: 8, name: "Planet Granite - Portland", zip: 97209 },
   { id: 9, name: "Portland Rock Gym", zip: 97232 }
-]
+];

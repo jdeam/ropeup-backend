@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const zipcodes = require('zipcodes');
 const fs = require('fs');
 
-const gyms = require('./gyms');
+const gyms = require('../gyms');
 const phrases = require('./phrases');
 const urls = require('./img_urls');
 const password = bcrypt.hashSync('test', 10);
@@ -24,13 +24,18 @@ while (users.length < 250) {
   }
   user.username = username;
 
+  let email = faker.internet.email();
+  while (email.length > 20) {
+    email = faker.internet.email();
+  }
+  user.email = email;
+
+  user.password = password;
   user.img_url = urls[users.length % 25];
   user.about = phrases[users.length % 25];
-  user.email = faker.internet.email();
-  user.password = password;
 
   user.zip = zips[Math.floor(Math.random() * zips.length)];
-  user.gym = [...gyms].sort((gymA, gymB) => {
+  user.gym_id = [...gyms].sort((gymA, gymB) => {
     const distA = zipcodes.distance(user.zip, gymA.zip);
     const distB = zipcodes.distance(user.zip, gymB.zip);
     return distA - distB;

@@ -7,7 +7,8 @@ exports.up = function(knex, Promise) {
     table.string('zip');
     table.string('start_year');
     table.text('img_url');
-    table.integer('gym');
+    table.integer('gym_id');
+    table.foreign('gym_id').references('gyms.id')
     table.boolean('tr');
     table.boolean('lead');
     table.integer('grade_low');

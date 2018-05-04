@@ -8,7 +8,7 @@ exports.seed = function (knex, Promise) {
       );
     })
     .then(function () {
-      return knex('users').insert(users.slice(0, 500));
+      return knex('users').insert(users);
     })
     .then(() => {
       return knex.raw(

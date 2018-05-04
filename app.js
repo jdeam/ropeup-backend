@@ -15,6 +15,7 @@ const routes = require('./routes');
 
 app.use('/auth', routes.auth);
 app.use('/users', routes.users);
+app.use('/gyms', routes.gyms);
 
 app.use((err, req, res, next) => {
   const status = err.status || 500;
