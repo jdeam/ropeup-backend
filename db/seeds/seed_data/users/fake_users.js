@@ -35,11 +35,11 @@ while (users.length < 250) {
   user.about = phrases[users.length % 25];
 
   user.zip = zips[Math.floor(Math.random() * zips.length)];
-  user.gym = [...gyms].sort((gymA, gymB) => {
+  user.gym_id = [...gyms].sort((gymA, gymB) => {
     const distA = zipcodes.distance(user.zip, gymA.zip);
     const distB = zipcodes.distance(user.zip, gymB.zip);
     return distA - distB;
-  })[0].name;
+  })[0].id;
 
   user.start_year = Math.floor(Math.random() * 11) + 2008;
 

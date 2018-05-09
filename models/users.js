@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const zipcodes = require('zipcodes');
 const schedules = require('./schedules');
+const gyms = require('./gyms');
 
 function getUserByEmail(email) {
   return knex('users')
@@ -69,6 +70,7 @@ function login(email, password) {
 }
 
 function getUserById(id) {
+  let user;
   return knex('users')
     .where({ id })
     .select(
@@ -77,7 +79,7 @@ function getUserById(id) {
       'img_url',
       'username',
       'zip',
-      'gym',
+      'gym_id',
       'tr',
       'lead',
       'grade_low',
@@ -85,7 +87,26 @@ function getUserById(id) {
       'start_year',
       'about'
     )
-    .first();
+    .first()
+    .then(foundUser => {
+      user = foundUser;
+      return schedules.getScheduleByUserId(user.id);
+    })
+    .then(schedule => {
+      user.schedule = schedule;
+      const radiusInMiles = 20;
+      const validZips = zipcodes.radius(user.zip, radiusInMiles);
+      return knex('gyms')
+        .whereIn('zip', validZips);
+    })
+    .then(gyms => {
+      user.gyms = gyms.sort((gymA, gymB) => {
+        const distA = zipcodes.distance(user.zip, gymA.zip);
+        const distB = zipcodes.distance(user.zip, gymB.zip);
+        return distA - distB;
+      });
+      return user;
+    });
 }
 
 function getUsersByZip(zip, id) {
@@ -100,7 +121,7 @@ function getUsersByZip(zip, id) {
       'img_url',
       'username',
       'zip',
-      'gym',
+      'gym_id',
       'tr',
       'lead',
       'grade_low',

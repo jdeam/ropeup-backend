@@ -1,7 +1,7 @@
 const knex = require('../db/knex');
 const zipcodes = require('zipcodes');
 
-function getNearbyGyms(id) {
+function getGyms(id) {
   let userZip;
   return knex('users')
     .where({ id })
@@ -23,5 +23,5 @@ function getNearbyGyms(id) {
 }
 
 module.exports = {
-  getNearbyGyms,
+  getGyms,
 };

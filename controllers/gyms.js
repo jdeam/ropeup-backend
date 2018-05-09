@@ -1,8 +1,8 @@
 const model = require('../models');
 
-function getNearbyGyms(req, res, next) {
+function getGyms(req, res, next) {
   const id = req.claim.user_id;
-  return model.gyms.getNearbyGyms(id)
+  return model.gyms.getGyms(id)
     .then(gyms => {
       return res.status(200).json({ gyms });
     })
@@ -12,5 +12,5 @@ function getNearbyGyms(req, res, next) {
 }
 
 module.exports = {
-  getNearbyGyms,
+  getGyms,
 };
